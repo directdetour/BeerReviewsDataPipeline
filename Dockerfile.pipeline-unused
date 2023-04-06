@@ -1,0 +1,25 @@
+# Use an official Python runtime as a parent image
+FROM python:3.9-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install the required Python libraries
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy your Python scripts into the container
+COPY app.py /app
+COPY flows/ /app/flows/
+COPY --chmod=600 app/creds.json /app/creds.json
+COPY --chmod=600 .kaggle/ /root/.kaggle/
+COPY start.sh /app/start.sh
+
+# Exposing Prefect agent port
+EXPOSE 8080
+
+# Set the command to start the shell script
+CMD ["/bin/bash", "/app/start.sh"]
+

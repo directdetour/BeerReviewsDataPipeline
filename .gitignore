@@ -1,0 +1,30 @@
+#python venv
+venv
+
+# Compiled python files
+__pycache__/
+
+# Docker-related files
+.dockerignore
+docker-compose.override.yml
+.env
+
+# Prefect-related files
+prefect/
+
+# Metabase-related files
+db-data
+
+# Other sensitive files
+*.pem
+*.key
+*.crt
+*.env
+!metabase_database.env
+
+# google creds
+/app/creds.json
+
+# data files
+beer_reviews.csv
+1-5-million-beer-reviews-from-beer-advocate.zip

@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  metabase:
+      volumes:
+        - ./metabase-data:/metabase-data
+        - ./app/creds.json:/creds.json
+      env_file:
+        - ./config/metabase_database.env
+      environment:
+        - GOOGLE_APPLICATION_CREDENTIALS=/creds.json
+      ports:
+        - 3000:3000
+      image: metabase/metabase
+      user: root
+      restart: always
