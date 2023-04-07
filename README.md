@@ -145,6 +145,12 @@ storage.objects.list
 storage.objects.update
 ```
 
+Main Dashboard
+![Alt text](BeerReviewsDashboardMain.jpg)
+
+Drill Through Details Dashboard
+![Alt text](BeerReviewsDashboardMain.jpg)
+
 ## Acknowledgements
 - DataTalksClub DE Zoomcamp Team
 - Metabase: https://www.metabase.com/
