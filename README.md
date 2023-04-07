@@ -12,6 +12,8 @@ The Beer Reviews Data Pipeline is a data engineering project that involves extra
 - Google Cloud Storage
 - Metabase
 
+![Beer Reviews Data Pipeline Image](BeerReviewsDataPipeline-2023-04-07-1326.png)
+
 ## Prerequisites
 
 Before running the Beer Reviews Data Pipeline, you must have the following installed:
