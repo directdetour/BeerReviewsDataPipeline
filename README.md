@@ -1,6 +1,4 @@
-# Project Title
-
-Beer Reviews Data Pipeline
+# Beer Reviews Data Pipeline
 
 ## Project Description
 
@@ -31,7 +29,7 @@ Also needed:
 ## Usage
 
 **Data Pipeline**
-1. Clone the repository to your local machine.
+1. Clone the repository to your local machine. `git clone https://github.com/directdetour/BeerReviewsDataPipeline.git`
 2. Create a Google Cloud Storage bucket to store the data. `bucket_name = 'beer_reviews_bucket'`
 3. Add GCS credentials to ./app/creds.json
     - GCP Service Account needs GCS and BigQuery read/write permissions
@@ -39,7 +37,7 @@ Also needed:
     - [Details - Visit kaggle docs](https://github.com/Kaggle/kaggle-api#api-credentials)
 5. Run start.sh to activate venv, install python requirements, launch data pipeline, and create bigquery table
     ```
-        ./start.sh
+    ./start.sh
     ```
 
 **Data Viz**
@@ -97,7 +95,7 @@ beerreviewsproject/
 
 Contributions to the Beer Reviews Data Pipeline project are welcome. To contribute, please follow these steps:
 
-1. Fork the repository: ``
+1. Fork the repository: `https://github.com/directdetour/BeerReviewsDataPipeline.git`
 2. Create a new branch: `git checkout -b feature/your-feature`
 3. Make your changes and commit them: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin feature/your-feature`
@@ -149,10 +147,14 @@ Main Dashboard
 ![Alt text](BeerReviewsDashboardMain.jpg)
 
 Drill Through Details Dashboard
-![Alt text](BeerReviewsDashboardMain.jpg)
+![Alt text](BeerReviewsDashboardClickThru.jpg)
 
 ## Acknowledgements
-- DataTalksClub DE Zoomcamp Team
+- DataTalksClub DE Zoomcamp Team  
+    - Twitter: [@DataTalksClub](https://twitter.com/DataTalksClub)
+    - Github: https://github.com/DataTalksClub/data-engineering-zoomcamp
+    - Website: https://datatalks.club/
+
 - Metabase: https://www.metabase.com/
 - Prefect: https://www.prefect.io/
 - The beer reviews data was obtained from Kaggle: https://www.kaggle.com/datasets/thedevastator/1-5-million-beer-reviews-from-beer-advocate
