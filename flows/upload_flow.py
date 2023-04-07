@@ -12,12 +12,13 @@ bucket = client.bucket(bucket_name)
 
 
 @task
-def configure_bucket_exists():
+def configure_bucket_exists(bucket):
     
     # Check if the bucket already exists
     if not bucket.exists():
         # Create the bucket
-        bucket.create()
+        client.create_bucket(bucket_name)
+        bucket = client.bucket(bucket_name)
         print(f"Bucket {bucket_name} created.")
 
 
@@ -37,6 +38,6 @@ def upload_processed_data(df):
 
 @flow()
 def upload_flow(data):
-    configure_bucket_exists()
+    configure_bucket_exists(bucket)
     processed_data = upload_processed_data(data)        
     return processed_data

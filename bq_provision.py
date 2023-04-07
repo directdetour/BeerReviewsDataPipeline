@@ -12,20 +12,37 @@ table_id = 'beer_reviews'
 bucket_name = 'beer_reviews_bucket'
 file_path = 'processed_beer_reviews.parquet'
 
-# Get the dataset object (returns None if the dataset does not exist)
-dataset = client.get_dataset(dataset_id)
+# # Get the dataset reference
+# dataset_ref = client.dataset(dataset_id)
+# # Get the dataset object (returns None if the dataset does not exist)
+# dataset = client.get_dataset(dataset_ref)
+
+# Check if the dataset already exists
+dataset_ref = client.dataset(dataset_id)
+dataset = None
+try:
+    dataset = client.get_dataset(dataset_ref)
+    print(f"Dataset {dataset_id} already exists.")
+except Exception as e:
+    print(f"Dataset {dataset_id} does not exist. Creating it now...")
 
 if dataset is None:
-    print(f"The dataset {dataset_id} does not exist in your project. Creating dataset...")
-    dataset = bigquery.Dataset(client.dataset(dataset_id))
+    dataset = bigquery.Dataset(dataset_ref)
     dataset.location = 'US'
-    client.create_dataset(dataset)
+    dataset = client.create_dataset(dataset)
 else:
     print(f"The dataset {dataset_id} exists in your project.")
 
 
-# Get the table object (returns None if the table does not exist)
-table = client.get_table(dataset.table(table_id))
+
+# Check table exists
+# Get a reference to the table.
+table_ref = dataset.table(table_id)
+table = None    
+try:
+    print(f"Table {table_id} already exists.")
+except Exception as e:
+    print(f"Table {table_id} does not exist. Creating it now...")
 
 if table is None:
     print(f"The table {table_id} does not exist in dataset {dataset_id}. Creating BQ external table")
@@ -33,9 +50,9 @@ if table is None:
     external_config.source_uris = [f"gs://{bucket_name}/{file_path}"]
     external_config.auto_detect = True
 
-    table = bigquery.Table(f"{client.project}.{dataset_id}.{table_id}")
+    # table = bigquery.Table(f"{client.project}.{dataset_id}.{table_id}")
+    table = bigquery.Table(table_ref)
     table.external_data_configuration = external_config
-
     table = client.create_table(table)
 else:
     print(f"The table {table_id} exists in dataset {dataset_id}.")

@@ -7,11 +7,11 @@ source venv/bin/activate
 # load python dependencies
 pip install -r requirements.txt
 
+cp -R ./.kaggle ~/.kaggle
+chmod 600 ~/.kaggle/kaggle.json
 
-# Start the Prefect agent in the background
-# prefect agent start -q beer-reviews &
 
-# Wait for the agent to start up
+# Wait for before start up
 sleep 5
 
 # Start the data download/upload automations Python script

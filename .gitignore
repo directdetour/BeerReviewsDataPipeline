@@ -25,6 +25,10 @@ db-data
 # google creds
 /app/creds.json
 
+# kaggle creds
+.kaggle/kaggle.json
+
 # data files
 beer_reviews.csv
 1-5-million-beer-reviews-from-beer-advocate.zip
+

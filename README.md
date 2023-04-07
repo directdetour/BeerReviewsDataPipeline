@@ -32,7 +32,7 @@ Also needed:
 
 **Data Pipeline**
 1. Clone the repository to your local machine.
-2. Create a Google Cloud Storage bucket to store the data.
+2. Create a Google Cloud Storage bucket to store the data. `bucket_name = 'beer_reviews_bucket'`
 3. Add GCS credentials to ./app/creds.json
     - GCP Service Account needs GCS and BigQuery read/write permissions
 4. Visit [kaggle.com](https://www.kaggle.com) and get api credentials save this to `./.kaggle/kaggle.json`
@@ -119,7 +119,31 @@ kaggle datasets download -d thedevastator/1-5-million-beer-reviews-from-beer-adv
     ```kaggle datasets download -d thedevastator/1-5-million-beer-reviews-from-beer-advocate```
 - Metabase is configured to use Google BigQuery as the data source, which is accessed through the Parquet file stored in the Google Cloud Storage bucket.
 
-
+- GCP Service Account needs minimum permissions, but will work if given Cloud Storage Admin and BigQuery Admin Roles. Min Permissions if using a custom role:
+```
+bigquery.datasets.create
+bigquery.datasets.get
+bigquery.datasets.update
+bigquery.jobs.create
+bigquery.jobs.delete
+bigquery.jobs.get
+bigquery.jobs.list
+bigquery.jobs.listAll
+bigquery.jobs.listExecutionMetadata
+bigquery.jobs.update
+bigquery.tables.create
+bigquery.tables.get
+bigquery.tables.list
+bigquery.tables.update
+storage.buckets.create
+storage.buckets.get
+storage.buckets.update
+storage.objects.create
+storage.objects.delete
+storage.objects.get
+storage.objects.list
+storage.objects.update
+```
 
 ## Acknowledgements
 - DataTalksClub DE Zoomcamp Team
